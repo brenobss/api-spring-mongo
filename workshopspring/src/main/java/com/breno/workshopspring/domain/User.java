@@ -3,28 +3,33 @@ package com.breno.workshopspring.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
 public class User implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	private int id;
+	@Id
+	private String id;
 	private String name;
 	private String email;
 	
 	public User() {
 	}
 
-	public User(int id, String name, String email) {
+	public User(String id, String name, String email) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -58,7 +63,7 @@ public class User implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return id == other.id;
+		return Objects.equals(id, other.id);
 	}
 	
 	
