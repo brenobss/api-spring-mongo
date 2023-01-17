@@ -22,7 +22,7 @@ public class PostService {
 	}
 	
 	public List<Post> findByTitleContaining(String text) {
-		Optional<List<Post>> obj = Optional.ofNullable(repo.findByTitleContainingIgnoreCase(text));
+		Optional<List<Post>> obj = Optional.ofNullable(repo.searchTitle(text));
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Nenhum post encontrado"));
 	}
 }
